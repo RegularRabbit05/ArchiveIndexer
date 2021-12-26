@@ -1,13 +1,20 @@
 package github.regularrabbit05.fileIndexer;
 
-import github.regularrabbit05.fileIndexer.types.Index;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 public class Indexer {
     public static void main(String[] args) {
-        Index fileIndex = (Index) Utils.ReadObjectFromFile("yourFile.bin");
-        boolean writeResult = !(fileIndex == null);
-        System.out.println("Result = " + writeResult);
-        boolean readResult = Utils.WriteObjectToFile(fileIndex, "yourFile.bin");
-        System.out.println("Result = " + readResult);
+    }
+
+    public static boolean isSameDay(Date date1, Date date2) {
+        LocalDate localDate1 = date1.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
+        LocalDate localDate2 = date2.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
+        return localDate1.isEqual(localDate2);
     }
 }

@@ -1,8 +1,9 @@
 package github.regularrabbit05.fileIndexer.types;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class Index {
+public class Index implements Serializable {
     public String name;
     public HashMap<Long, IndexedFileObject> index = new HashMap<>();
     public final byte version = 0x01;
